@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 # Match to number for Fibonacci.
 #
-# $ make 42
+# $ make -s 42
 # 267914296
 #
 .PHONY:

@@ -1,4 +1,3 @@
-SHELL := /bin/bash
 MAKEFLAGS = -s
 
 # Match to number for Fibonacci.

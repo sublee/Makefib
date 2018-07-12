@@ -9,7 +9,7 @@
 #
 MAKEFLAGS := --silent
 
-.PHONY: clean
+.PHONY: clean test
 
 %: TARGETS = \
 	$(foreach i,$(shell seq 0 $@), \

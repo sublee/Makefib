@@ -1,10 +1,14 @@
-MAKEFLAGS = -s
-
+# =======
+# Makefib
+# =======
+#
 # Match to number for Fibonacci.
 #
 # $ make 42
 # 267914296
 #
+MAKEFLAGS := --silent
+
 .PHONY: clean
 
 %: TARGETS = \

@@ -41,3 +41,21 @@ xx:
 # Flush all memoized fib numbers.
 clean:
 	rm -f x*
+
+# Test fib of 0-12.
+test: assert = [ "$$( $(MAKE) $(1) )" -eq $(2) ]
+
+test:
+	$(call assert,  0,   0)
+	$(call assert,  1,   1)
+	$(call assert,  2,   1)
+	$(call assert,  3,   2)
+	$(call assert,  4,   3)
+	$(call assert,  5,   5)
+	$(call assert,  6,   8)
+	$(call assert,  7,  13)
+	$(call assert,  8,  21)
+	$(call assert,  9,  34)
+	$(call assert, 10,  55)
+	$(call assert, 11,  89)
+	$(call assert, 12, 144)

@@ -12,7 +12,7 @@ MAKEFLAGS := --silent
 .PHONY: clean
 
 %: TARGETS = \
-	$(foreach i,$(shell seq 2 $@), \
+	$(foreach i,$(shell seq 0 $@), \
 		$(shell printf "%$$(( $i + 1 ))s" | tr ' ' 'x') \
 	)
 

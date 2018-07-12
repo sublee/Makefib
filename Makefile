@@ -1,37 +1,35 @@
 SHELL := /bin/bash
+MAKEFLAGS = -s
 
 # Match to number for Fibonacci.
 #
-# $ make -s 42
+# $ make 42
 # 267914296
 #
-.PHONY:
+.PHONY: clean
+
+%: TARGETS = \
+  $(foreach i,$(shell seq 2 $@),\
+    $(shell printf "%$$(( $i + 1 ))s" | tr ' ' 'x') \
+   )
+
 %:
-	$(eval target = $(shell printf "%$@s" | tr ' ' 'x')x)
-	@$(MAKE) $(target)
-	@cat $(target)
+	@$(MAKE) $(TARGETS)
+	@cat $(lastword $(TARGETS))
 
 # xxx... files memoize the fib numbers. xxx... with length N keeps fib of N-1.
 # So x keeps fib of 0, xx keeps fib of 1.
 x:
 	@echo 0 > x
+
 xx:
 	@echo 1 > xx
 
-# $(xxx) is xxx xxxx xxxxx xxxxxx ...
-xxx = $(shell for i in {3..97}; do printf "%$${i}s" | tr ' ' 'x'; echo; done)
-
 # xxx... with length N depends on xxx... with length N-1 and N-2.
-$(xxx): %xx: %x %
-	@x=$@; \
-	\
-	a=$${x:0:-1}; \
-	b=$${x:0:-2}; \
-	\
-	fib_a=$$(cat $$a); \
-	fib_b=$$(cat $$b); \
-	\
-	echo $$(( $$fib_a + $$fib_b )) > $@
+%xx: %x %
+	a=$$(cat $(word 1,$^)); \
+	b=$$(cat $(word 2,$^)); \
+	echo $$(( $$a + $$b )) > $@
 
 # Flush all memoized fib numbers.
 clean:

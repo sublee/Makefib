@@ -9,9 +9,9 @@ MAKEFLAGS = -s
 .PHONY: clean
 
 %: TARGETS = \
-  $(foreach i,$(shell seq 2 $@),\
-    $(shell printf "%$$(( $i + 1 ))s" | tr ' ' 'x') \
-   )
+	$(foreach i,$(shell seq 2 $@), \
+		$(shell printf "%$$(( $i + 1 ))s" | tr ' ' 'x') \
+	)
 
 %:
 	@$(MAKE) $(TARGETS)

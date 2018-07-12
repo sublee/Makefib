@@ -6,6 +6,7 @@ MAKEFLAGS = -s
 # $ make 42
 # 267914296
 #
+.PHONY: clean
 
 %: TARGETS = \
   $(foreach i,$(shell seq 2 $@),\

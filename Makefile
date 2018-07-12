@@ -43,7 +43,7 @@ clean:
 	rm -f x*
 
 # Test fib of 0-12.
-test: assert = [ "$$( $(MAKE) $(1) )" -eq $(2) ]
+test: assert = echo fib\( $(1) \) = $(2); [ "$$( $(MAKE) $(1) )" -eq $(2) ]
 
 test:
 	$(call assert,  0,   0)

@@ -14,7 +14,11 @@ MAKEFLAGS = -s
 	)
 
 %:
+	# Dependencies are solved at here. Here calls "make x xx xxx xxxx" for
+	# "xxxx".
 	@$(MAKE) $(TARGETS)
+
+	# And prints the content of "xxxx" for "xxxx". It will print fib of 3.
 	@cat $(lastword $(TARGETS))
 
 # xxx... files memoize the fib numbers. xxx... with length N keeps fib of N-1.

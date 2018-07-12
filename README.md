@@ -3,7 +3,7 @@
 Fibonacci with dynamic programming in GNU Make.
 
 ```console
-$ make -s 42
+$ make 42
 267914296
 ```
 

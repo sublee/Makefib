@@ -2,7 +2,7 @@
 # Makefib
 # =======
 #
-# Match to number for Fibonacci.
+# Calculates a Fibonacci number in O(n) using build targets as memoization.
 #
 # $ make 42
 # 267914296
